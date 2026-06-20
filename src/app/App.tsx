@@ -12,6 +12,8 @@ interface Exercise {
   duration: string;
   description: string;
   repetitions: string;
+  video?: string;
+  youtubeEmbed?: string;
   videoPlaceholder: string;
   instructions: string[];
   image: string;
@@ -26,6 +28,7 @@ export default function App() {
   const [selectedPhase, setSelectedPhase] = useState(1);
   const [showPhaseExercises, setShowPhaseExercises] = useState<{ [key: number]: boolean }>({});
   const [selectedExercise, setSelectedExercise] = useState<Exercise | null>(null);
+  const [showYoutubePlayback, setShowYoutubePlayback] = useState(false);
   const [showQuestionnaire, setShowQuestionnaire] = useState(false);
   const [questionStep, setQuestionStep] = useState(0);
   const [questionAnswers, setQuestionAnswers] = useState({
@@ -88,390 +91,393 @@ export default function App() {
     1: [
       {
         id: 101,
-        title: "Vježba dubokog disanja",
-        duration: "5 min",
-        repetitions: "Ponoviti 10 puta",
-        description: "Opuštajuće disanje za smanjenje napetosti i poticanje cirkulacije",
-        videoPlaceholder: "https://images.unsplash.com/photo-1593431763017-c689a61b729a?w=800",
-        image: "https://images.unsplash.com/photo-1593431763017-c689a61b729a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+        title: "Otvaranje i zatvaranje šake",
+        duration: "2 min",
+        repetitions: "10-15 ponavljanja",
+        description: "Potiče cirkulaciju i smanjuje ukočenost šake i ruke.",
+        video: "/videos/videos/duboko-disanje.mp4",
+        youtubeEmbed: "https://www.youtube.com/embed/61BGYpUQJNk?start=100&end=120&autoplay=1",
+        videoPlaceholder: "/images/ruka.png",
+        image: "/images/ruka.png",
         instructions: [
-          "Sjednite ili legnite u udoban položaj",
-          "Udahnite duboko kroz nos 4 sekunde",
-          "Zadržite dah 2 sekunde",
-          "Izdahnite kroz usta 6 sekundi",
-          "Ponovite 10 puta"
+          "Ispružite ili poduprite ruku u udobnom položaju",
+          "Polako otvorite šaku",
+          "Zatim polako zatvorite šaku",
+          "Pokret izvodite mirno i bez naglih pokreta",
+          "Ponovite 10 do 15 puta"
         ]
       },
       {
         id: 102,
-        title: "Blagi pokreti ramena",
+        title: "Kruženje vrata",
         duration: "3 min",
-        repetitions: "5 ponavljanja svaki smjer",
-        description: "Nježno kruženje ramenima za poboljšanje pokretljivosti",
-        videoPlaceholder: "https://images.unsplash.com/photo-1536914356815-690cf1fa40e2?w=800",
-        image: "https://images.unsplash.com/photo-1536914356815-690cf1fa40e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+        repetitions: "5 ponavljanja u svaku stranu",
+        description: "Pomaže smanjiti napetost u vratu i gornjem dijelu ramena.",
+        video: "/videos/videos/duboko-disanje.mp4",
+        youtubeEmbed: "https://www.youtube.com/embed/61BGYpUQJNk?start=197&end=210&autoplay=1",
+        videoPlaceholder: "/images/vrat.png",
+        image: "/images/vrat.png",
         instructions: [
-          "Stojte ili sjednite uspravno",
-          "Polako podignite ramena prema ušima",
-          "Kružite ramenima naprijed 5 puta",
-          "Zatim kružite ramenima natrag 5 puta",
-          "Odmorite se između ponavljanja"
+          "Sjednite ili stanite uspravno",
+          "Opustite ramena",
+          "Polako pomičite glavu u laganom kružnom pokretu",
+          "Izvodite pokret bez forsiranja",
+          "Ponovite 5 puta u svaku stranu"
         ]
       },
       {
         id: 103,
-        title: "Stezanje i otpuštanje šake",
-        duration: "2 min",
-        repetitions: "10 ponavljanja svaka ruka",
-        description: "Poboljšava cirkulaciju i smanjuje otok u ruci",
-        videoPlaceholder: "https://images.unsplash.com/photo-1595392599406-88100147f91c?w=800",
-        image: "https://images.unsplash.com/photo-1595392599406-88100147f91c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+        title: "Kruženje ramenima",
+        duration: "3 min",
+        repetitions: "5 ponavljanja u svakom smjeru",
+        description: "Poboljšava pokretljivost ramena i smanjuje ukočenost.",
+        video: "/videos/videos/duboko-disanje.mp4",
+        youtubeEmbed: "https://www.youtube.com/embed/61BGYpUQJNk?start=282&end=311&autoplay=1",
+        videoPlaceholder: "/images/kramen.png",
+        image: "/images/kramen.png",
         instructions: [
-          "Ispružite ruku ispred sebe",
-          "Polako stisnite šaku",
-          "Zadržite 3 sekunde",
-          "Otpustite i raširite prste",
-          "Ponovite 10 puta svaku ruku"
+          "Sjednite ili stanite uspravno",
+          "Polako podignite ramena prema ušima",
+          "Kružite ramenima prema naprijed",
+          "Zatim kružite ramenima prema natrag",
+          "Ponovite 5 puta u svakom smjeru"
         ]
       },
       {
         id: 104,
-        title: "Nježno istezanje vrata",
+        title: "Podizanje ruke prema naprijed",
         duration: "4 min",
-        repetitions: "3 ponavljanja svaka strana",
-        description: "Smanjuje napetost u vratu i ramenima",
-        videoPlaceholder: "https://images.unsplash.com/photo-1532543904603-29d921de27c7?w=800",
-        image: "https://images.unsplash.com/photo-1532543904603-29d921de27c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+        repetitions: "5-10 ponavljanja",
+        description: "Pomaže postupnom vraćanju pokreta ruke prema naprijed.",
+        youtubeEmbed: "https://www.youtube.com/embed/61BGYpUQJNk?start=384&end=404&autoplay=1",
+        videoPlaceholder: "/images/naprid.png",
+        image: "/images/naprid.png",
         instructions: [
-          "Sjednite uspravno s opuštenim ramenima",
-          "Polako nagnite glavu prema desnom ramenu",
-          "Zadržite 15 sekundi",
-          "Vratite se u sredinu i ponovite na lijevu stranu",
-          "Ponovite 3 puta svaku stranu"
+          "Stanite ili sjednite uspravno",
+          "Ruku polako podižite prema naprijed",
+          "Podignite samo do granice ugode",
+          "Zadržite kratko",
+          "Polako spustite ruku"
         ]
       },
       {
         id: 105,
-        title: "Pokret 'pendulum'",
-        duration: "3 min",
-        repetitions: "8-10 ljuljanja svaki smjer",
-        description: "Blago ljuljanje ruke za početnu mobilizaciju",
-        videoPlaceholder: "https://images.unsplash.com/photo-1602192405339-2d9e2e34a972?w=800",
-        image: "https://images.unsplash.com/photo-1602192405339-2d9e2e34a972?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+        title: "Podizanje ruke u stranu",
+        duration: "4 min",
+        repetitions: "5-10 ponavljanja",
+        description: "Pomaže vraćanju pokretljivosti ruke u stranu.",
+        video: "https://www.youtube.com/embed/xd36lAM0qP0?start=30&end=90",
+        youtubeEmbed: "https://www.youtube.com/embed/61BGYpUQJNk?start=452&end=470&autoplay=1",
+        videoPlaceholder: "/images/bok.png",
+        image: "/images/bok.png",
         instructions: [
-          "Nagnite se naprijed, oslonite se zdravom rukom",
-          "Pustite operiranu ruku da visi opušteno",
-          "Nježno ljuljajte ruku naprijed-natrag",
-          "Zatim ljuljajte lijevo-desno",
-          "Kružite u malim krugovima"
+          "Stanite ili sjednite uspravno",
+          "Ruku polako podižite u stranu",
+          "Ne forsirajte pokret ako osjećate bol",
+          "Zadržite kratko u ugodnom položaju",
+          "Polako spustite ruku"
         ]
       },
       {
         id: 106,
-        title: "Pokret ramena gore-dolje",
-        duration: "2 min",
-        repetitions: "12 ponavljanja",
-        description: "Jednostavno podizanje i spuštanje ramena",
-        videoPlaceholder: "https://images.unsplash.com/photo-1536914356815-690cf1fa40e2?w=800",
-        image: "https://images.unsplash.com/photo-1536914356815-690cf1fa40e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+        title: "Pomicanje ruke prema natrag",
+        duration: "4 min",
+        repetitions: "5-10 ponavljanja",
+        description: "Pomaže postupnom vraćanju pokreta ramena prema natrag.",
+        video: "/videos/videos/duboko-disanje.mp4",
+        youtubeEmbed: "https://www.youtube.com/embed/61BGYpUQJNk?start=530&end=550&autoplay=1",
+        videoPlaceholder: "/images/iza.png",
+        image: "/images/iza.png",
         instructions: [
-          "Sjednite ili stojte uspravno",
-          "Polako podignite oba ramena prema ušima",
-          "Zadržite 2 sekunde",
-          "Opustite ramena prema dolje",
-          "Ponovite 12 puta"
+          "Stanite uspravno s opuštenim ramenima",
+          "Polako pomaknite ruku prema natrag",
+          "Pokret neka bude mali i kontroliran",
+          "Zadržite kratko",
+          "Vratite ruku u početni položaj"
         ]
       },
       {
         id: 107,
-        title: "Istezanje lakta",
+        title: "Savijanje lakta",
         duration: "3 min",
-        repetitions: "8 ponavljanja svaka ruka",
-        description: "Nježno savijanje i ispružanje lakta",
-        videoPlaceholder: "https://images.unsplash.com/photo-1595392599406-88100147f91c?w=800",
-        image: "https://images.unsplash.com/photo-1595392599406-88100147f91c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+        repetitions: "10 ponavljanja",
+        description: "Održava pokretljivost lakta i ruke tijekom ranog oporavka.",
+        video: "/videos/videos/duboko-disanje.mp4",
+        youtubeEmbed: "https://www.youtube.com/embed/61BGYpUQJNk?start=667&end=693&autoplay=1",
+        videoPlaceholder: "/images/lakat.png",
+        image: "/images/lakat.png",
         instructions: [
-          "Ispružite ruku ispred sebe",
+          "Ispružite ruku ispred sebe ili je poduprite",
           "Polako savijte lakat",
           "Dovedite šaku prema ramenu",
-          "Vratite u ispružen položaj",
-          "Ponovite 8 puta"
+          "Zatim ponovno ispružite ruku",
+          "Ponovite 10 puta"
         ]
       },
       {
         id: 108,
-        title: "Rotacija zapešća",
-        duration: "2 min",
-        repetitions: "10 kruženja svaki smjer",
-        description: "Blago kruženje zapešća za održavanje pokretljivosti",
-        videoPlaceholder: "https://images.unsplash.com/photo-1532543904603-29d921de27c7?w=800",
-        image: "https://images.unsplash.com/photo-1532543904603-29d921de27c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+        title: "Lagano istezanje i opuštanje ramena",
+        duration: "3 min",
+        repetitions: "5-10 ponavljanja",
+        description: "Završna vježba za opuštanje ramena i smanjenje napetosti.",
+        video: "/videos/videos/duboko-disanje.mp4",
+        youtubeEmbed: "https://www.youtube.com/embed/61BGYpUQJNk?start=756&end=777&autoplay=1",
+        videoPlaceholder: "/images/lagano.png",
+        image: "/images/lagano.png",
         instructions: [
-          "Ispružite ruku ispred sebe",
-          "Kružite zapešćem u smjeru kazaljke na satu",
-          "Napravite 10 kruženja",
-          "Promijenite smjer",
-          "Ponovite s drugom rukom"
+          "Sjednite u udoban položaj",
+          "Opustite ramena i ruke",
+          "Polako udahnite kroz nos",
+          "Izdahnite kroz usta",
+          "Ponovite nekoliko puta i završite vježbanje mirno"
         ]
       }
     ],
     2: [
       {
         id: 201,
-        title: "Penjanje po zidu prstima",
-        duration: "5 min",
-        repetitions: "6-8 ponavljanja",
-        description: "Postepeno povećavanje raspona pokreta ramena",
-        videoPlaceholder: "https://images.unsplash.com/photo-1602192405339-2d9e2e34a972?w=800",
-        image: "https://images.unsplash.com/photo-1602192405339-2d9e2e34a972?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+        title: "Potisak laktova prema natrag",
+        duration: "4 min",
+        repetitions: "5 ponavljanja",
+        description: "Pomaže otvoriti prsni koš, poboljšati držanje i povećati pokretljivost ramena.",
+        video: "/videos/videos/duboko-disanje.mp4",
+        youtubeEmbed: "https://www.youtube.com/embed/P5K8itTPxd4?start=154&end=191&autoplay=1",
+        videoPlaceholder: "/images/potisak-laktova-prema-natrag.png",
+        image: "/images/potisak-laktova-prema-natrag.png",
         instructions: [
-          "Stanite licem prema zidu",
-          "Stavite prste na zid u visini struka",
-          "Polako 'penjite' prste prema gore",
-          "Zaustavite se ako osjetite nelagodu",
-          "Označite najdalju točku koju dosegnete"
+          "Stavite prste iza glave",
+          "Laktove usmjerite prema naprijed",
+          "Polako povlačite laktove prema natrag",
+          "Stisnite lopatice jednu prema drugoj",
+          "Zadržite položaj 5 sekundi i vratite se u početni položaj"
         ]
       },
       {
         id: 202,
-        title: "Istezanje sa štapom",
-        duration: "7 min",
-        repetitions: "5 ponavljanja",
-        description: "Korištenje štapa za asistiranu mobilizaciju ramena",
-        videoPlaceholder: "https://images.unsplash.com/photo-1532543904603-29d921de27c7?w=800",
-        image: "https://images.unsplash.com/photo-1532543904603-29d921de27c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+        title: "Kruženje ramenima",
+        duration: "3 min",
+        repetitions: "10 kruženja u svakom smjeru",
+        description: "Poboljšava pokretljivost ramena i smanjuje ukočenost.",
+        video: "/videos/videos/duboko-disanje.mp4",
+        youtubeEmbed: "https://www.youtube.com/embed/P5K8itTPxd4?start=195&end=238&autoplay=1",
+        videoPlaceholder: "/images/ramena.png",
+        image: "/images/ramena.png",
         instructions: [
-          "Držite štap objema rukama",
-          "Polako podignite štap iznad glave",
-          "Koristite zdravu ruku za pomoć",
-          "Zadržite 10 sekundi",
-          "Ponovite 5 puta"
+          "Stanite ili sjednite uspravno",
+          "Opustite ramena",
+          "Polako kružite ramenima prema natrag",
+          "Zatim kružite ramenima prema naprijed",
+          "Pokret izvodite polako i kontrolirano"
         ]
       },
       {
         id: 203,
-        title: "Pasivno podizanje ruke",
+        title: "Penjanje prstima po zidu sprijeda",
         duration: "5 min",
-        repetitions: "8 ponavljanja",
-        description: "Korištenje zdrave ruke za pomoć operiranoj ruci",
-        videoPlaceholder: "https://images.unsplash.com/photo-1625223192003-76b3cc37350c?w=800",
-        image: "https://images.unsplash.com/photo-1625223192003-76b3cc37350c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+        repetitions: "5–10 ponavljanja",
+        description: "Povećava opseg pokreta ruke prema naprijed.",
+        video: "/videos/videos/duboko-disanje.mp4",
+        youtubeEmbed: "https://www.youtube.com/embed/P5K8itTPxd4?start=240&end=275&autoplay=1",
+        videoPlaceholder: "/images/prsti.png",
+        image: "/images/prsti.png",
         instructions: [
-          "Legnite na leđa",
-          "Uhvatite operiranu ruku zdravom rukom",
-          "Polako podignite ruku prema stropu",
-          "Zdrava ruka pruža potporu",
-          "Zadržite 5 sekundi, spustite polako"
+          "Stanite licem prema zidu",
+          "Prstima operirane ruke dodirnite zid",
+          "Polako penjite prste prema gore",
+          "Zaustavite se kada osjetite istezanje bez boli",
+          "Zadržite 10 sekundi ili 3 duboka udaha te polako spustite ruku"
         ]
       },
       {
         id: 204,
-        title: "Rotacija ramena",
-        duration: "6 min",
-        repetitions: "10 ponavljanja",
-        description: "Poboljšanje unutarnje i vanjske rotacije",
-        videoPlaceholder: "https://images.unsplash.com/photo-1536914356815-690cf1fa40e2?w=800",
-        image: "https://images.unsplash.com/photo-1536914356815-690cf1fa40e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+        title: "Penjanje prstima po zidu u stranu",
+        duration: "5 min",
+        repetitions: "5–10 ponavljanja",
+        description: "Pomaže vraćanju pokretljivosti ruke u stranu.",
+        video: "/videos/videos/duboko-disanje.mp4",
+        youtubeEmbed: "https://www.youtube.com/embed/P5K8itTPxd4?start=317&end=342&autoplay=1",
+        videoPlaceholder: "/images/pstrana.png",
+        image: "/images/pstrana.png",
         instructions: [
-          "Savijte lakat pod 90 stupnjeva",
-          "Držite lakat uz tijelo",
-          "Rotirajte podlakticu prema van",
-          "Zatim rotirajte prema unutra",
-          "Ponovite 10 puta"
+          "Stanite bočno uz zid",
+          "Operiranu ruku postavite uz zid",
+          "Polako penjite prste prema gore",
+          "Zaustavite se na granici ugodnog istezanja",
+          "Zadržite 10 sekundi ili 3 duboka udaha pa polako spustite ruku"
         ]
       },
       {
         id: 205,
-        title: "Istezanje prsnih mišića uz zid",
-        duration: "4 min",
-        repetitions: "4 ponavljanja svaka strana",
-        description: "Otvaranje prsnog koša uz pomoć zida",
-        videoPlaceholder: "https://images.unsplash.com/photo-1602192405339-2d9e2e34a972?w=800",
-        image: "https://images.unsplash.com/photo-1602192405339-2d9e2e34a972?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+        title: "Podizanje ruku uz štap",
+        duration: "6 min",
+        repetitions: "8–10 ponavljanja",
+        description: "Povećava pokretljivost ramena i prsnog koša.",
+        video: "/videos/videos/duboko-disanje.mp4",
+        youtubeEmbed: "https://www.youtube.com/embed/P5K8itTPxd4?start=399&end=455&autoplay=1",
+        videoPlaceholder: "/images/stap.png",
+        image: "/images/stap.png",
         instructions: [
-          "Stanite uz zid",
-          "Postavite podlakticu na zid",
-          "Polako se okrenite u suprotnom smjeru",
-          "Osjetite istezanje u prsima",
-          "Zadržite 20 sekundi"
+          "Lezite na leđa sa savijenim koljenima",
+          "Uzmite štap, metlu ili remen objema rukama",
+          "Polako podignite ruke prema stropu",
+          "Nastavite pokret prema glavi dok ne osjetite lagano istezanje",
+          "Polako vratite ruke u početni položaj"
         ]
       },
       {
         id: 206,
-        title: "Izvlačenje ramena prema naprijed",
-        duration: "4 min",
-        repetitions: "10 ponavljanja",
-        description: "Aktivacija mišića oko lopatica",
-        videoPlaceholder: "https://images.unsplash.com/photo-1625223192003-76b3cc37350c?w=800",
-        image: "https://images.unsplash.com/photo-1625223192003-76b3cc37350c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
-        instructions: [
-          "Ispružite ruke ispred sebe",
-          "Gurnite ramena naprijed",
-          "Osjetite širenje lopatica",
-          "Vratite ramena u neutralan položaj",
-          "Ponovite 10 puta"
-        ]
-      },
-      {
-        id: 207,
-        title: "Lakat prema zidu",
+        title: "Penjanje rukom po leđima",
         duration: "5 min",
-        repetitions: "6 ponavljanja",
-        description: "Povećanje fleksije ramena",
-        videoPlaceholder: "https://images.unsplash.com/photo-1532543904603-29d921de27c7?w=800",
-        image: "https://images.unsplash.com/photo-1532543904603-29d921de27c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+        repetitions: "5–10 ponavljanja",
+        description: "Pomaže vraćanju pokreta potrebnih za svakodnevne aktivnosti poput oblačenja.",
+        video: "/videos/videos/duboko-disanje.mp4",
+        youtubeEmbed: "https://www.youtube.com/embed/P5K8itTPxd4?start=488&end=502&autoplay=1",
+        videoPlaceholder: "/images/leda.png",
+        image: "/images/leda.png",
         instructions: [
-          "Stanite licem prema zidu",
-          "Savijte lakat 90 stupnjeva",
-          "Podignite lokat prema zidu",
-          "Polako se povlačite nazad",
-          "Ponovite 6 puta"
-        ]
-      },
-      {
-        id: 208,
-        title: "Abdukcija ramena s podrškom",
-        duration: "5 min",
-        repetitions: "8 ponavljanja",
-        description: "Podizanje ruke u stranu uz pomoć",
-        videoPlaceholder: "https://images.unsplash.com/photo-1536914356815-690cf1fa40e2?w=800",
-        image: "https://images.unsplash.com/photo-1536914356815-690cf1fa40e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
-        instructions: [
-          "Koristite zdravu ruku za potporu",
-          "Polako podignite ruku u stranu",
-          "Ne podižite iznad razine ramena",
-          "Zadržite 3 sekunde",
-          "Spustite polako"
+          "Stanite uspravno",
+          "Operiranu ruku postavite iza leđa",
+          "Polako klizite rukom prema gore po sredini leđa",
+          "Držite lopaticu povučenu prema dolje i natrag",
+          "Zadržite 10 sekundi ili 3 duboka udaha te se vratite u početni položaj"
         ]
       }
     ],
     3: [
       {
         id: 301,
-        title: "Jačanje sa laganim utezima",
-        duration: "10 min",
-        repetitions: "2 serije od 12 ponavljanja",
-        description: "Lagani utezi (0.5-1kg) za jačanje mišića ramena",
-        videoPlaceholder: "https://images.unsplash.com/photo-1497369753325-69e1f26b7f56?w=800",
-        image: "https://images.unsplash.com/photo-1497369753325-69e1f26b7f56?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+        title: "Klizanje uz zid",
+        duration: "5 min",
+        repetitions: "2 serije po 10 ponavljanja",
+        description: "Pomaže vraćanju punog opsega pokreta ramena i poboljšava mobilnost gornjeg dijela tijela.",
+        youtubeEmbed: "https://www.youtube.com/embed/-H6pLhuV8Hc?start=222&end=278&autoplay=1",
+        videoPlaceholder: "/images/klizanje.png",
+        image: "/images/klizanje.png",
         instructions: [
-          "Počnite s utezima od 0.5kg",
-          "Polako podižite ruku u stranu",
-          "Ne podižite više od visine ramena",
-          "Spustite polako",
-          "Ponovite 12 puta, 2 serije"
+          "Stanite leđima ili licem prema zidu",
+          "Oslonite ruke na zid",
+          "Polako klizite rukama prema gore",
+          "Držite ramena spuštena i opuštena",
+          "Vratite se u početni položaj i ponovite"
         ]
       },
       {
         id: 302,
-        title: "Kruženje ruku",
-        duration: "8 min",
-        repetitions: "15 kruženja svaki smjer",
-        description: "Potpuni raspon pokreta u svim smjerovima",
-        videoPlaceholder: "https://images.unsplash.com/photo-1579202299957-8e8b24629f47?w=800",
-        image: "https://images.unsplash.com/photo-1579202299957-8e8b24629f47?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+        title: "Veslanje s elastičnom trakom",
+        duration: "5 min",
+        repetitions: "2 serije po 10–12 ponavljanja",
+        description: "Jača mišiće između lopatica i poboljšava držanje tijela.",
+        youtubeEmbed: "https://www.youtube.com/embed/-H6pLhuV8Hc?start=321&end=360&autoplay=1",
+        videoPlaceholder: "/images/veslanje.png",
+        image: "/images/veslanje.png",
         instructions: [
-          "Stojte s nogama na širini ramena",
-          "Ispružite ruke u stranu",
-          "Kružite ruke u malim krugovima",
-          "Postupno povećavajte veličinu krugova",
-          "Promijenite smjer nakon 15 kruženja"
+          "Pričvrstite elastičnu traku ispred sebe",
+          "Uhvatite krajeve trake objema rukama",
+          "Povlačite laktove prema natrag uz tijelo",
+          "Stisnite lopatice na kraju pokreta",
+          "Polako vratite ruke u početni položaj"
         ]
       },
       {
         id: 303,
-        title: "Funkcionalne aktivnosti",
-        duration: "15 min",
-        repetitions: "Svaka aktivnost 5 puta",
-        description: "Svakodnevne aktivnosti sa punim pokretom",
-        videoPlaceholder: "https://images.unsplash.com/photo-1772283152748-ae588cd86bc7?w=800",
-        image: "https://images.unsplash.com/photo-1772283152748-ae588cd86bc7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+        title: "Protrakcija i retrakcija lopatica",
+        duration: "6 min",
+        repetitions: "2 serije po 10 ponavljanja",
+        description: "Poboljšava stabilnost ramena i kontrolu lopatica.",
+        youtubeEmbed: "https://www.youtube.com/embed/-H6pLhuV8Hc?start=405&end=425&autoplay=1",
+        videoPlaceholder: "/images/lopatica.png",
+        image: "/images/lopatica.png",
         instructions: [
-          "Vježbajte češljanje kose",
-          "Vježbajte dosezanje police",
-          "Vježbajte stavljanje gornje odjeće",
-          "Vježbajte zatvaranje grudnjaka",
-          "Postupno povećavajte težinu predmeta"
+          "Zauzmite položaj na koljenima ili plank položaj",
+          "Ruke držite potpuno ispružene",
+          "Gurajte prsni koš od poda kako bi se lopatice razdvojile",
+          "Zatim dopustite lopaticama da se približe jedna drugoj",
+          "Tijekom cijele vježbe držite tijelo stabilnim"
         ]
       },
       {
         id: 304,
-        title: "Istezanje prsnih mišića",
-        duration: "7 min",
-        repetitions: "3 ponavljanja, 30 sekundi svako",
-        description: "Održavanje fleksibilnosti prsnog koša",
-        videoPlaceholder: "https://images.unsplash.com/photo-1625223192003-76b3cc37350c?w=800",
-        image: "https://images.unsplash.com/photo-1625223192003-76b3cc37350c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+        title: "Povlačenje lopatica s trakom",
+        duration: "5 min",
+        repetitions: "2 serije po 10–12 ponavljanja",
+        description: "Jača mišiće lopatica i stražnjeg dijela ramena.",
+        youtubeEmbed: "https://www.youtube.com/embed/-H6pLhuV8Hc?start=507&end=547&autoplay=1",
+        videoPlaceholder: "/images/povlaćenje.png",
+        image: "/images/povlaćenje.png",
         instructions: [
-          "Stanite u otvor vrata",
-          "Postavite podlaktice na dovratnik",
-          "Nježno se nagnite naprijed",
-          "Osjetite istezanje u prsima",
-          "Zadržite 30 sekundi, 3 puta"
+          "Uhvatite elastičnu traku objema rukama",
+          "Ruke ispružite ispred tijela",
+          "Povlačite traku širenjem ruku u stranu",
+          "Stisnite lopatice na kraju pokreta",
+          "Polako se vratite u početni položaj"
         ]
       },
       {
         id: 305,
-        title: "Plank s modifikacijom",
-        duration: "6 min",
-        repetitions: "3 serije po 20 sekundi",
-        description: "Jačanje jezgre tijela",
-        videoPlaceholder: "https://images.unsplash.com/photo-1497369753325-69e1f26b7f56?w=800",
-        image: "https://images.unsplash.com/photo-1497369753325-69e1f26b7f56?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+        title: "Vanjska rotacija ramena",
+        duration: "5 min",
+        repetitions: "2 serije po 10 ponavljanja",
+        description: "Jača rotatornu manšetu i stabilizira rame.",
+        youtubeEmbed: "https://www.youtube.com/embed/-H6pLhuV8Hc?start=565&end=595&autoplay=1",
+        videoPlaceholder: "/images/vrot.png",
+        image: "/images/vrot.png",
         instructions: [
-          "Počnite s plank-om na koljenima",
-          "Držite tijelo u ravnoj liniji",
-          "Aktivirajte trbušne mišiće",
-          "Zadržite 20 sekundi",
-          "Postupno prijeđite na puni plank"
+          "Pričvrstite elastičnu traku sa strane tijela",
+          "Savijte lakat pod 90 stupnjeva",
+          "Držite lakat uz tijelo",
+          "Povlačite podlakticu prema van",
+          "Polako se vratite u početni položaj"
         ]
       },
       {
         id: 306,
-        title: "Potisak ramena s utezima",
-        duration: "8 min",
-        repetitions: "3 serije od 10 ponavljanja",
-        description: "Jačanje deltoidnih mišića",
-        videoPlaceholder: "https://images.unsplash.com/photo-1579202299957-8e8b24629f47?w=800",
-        image: "https://images.unsplash.com/photo-1579202299957-8e8b24629f47?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+        title: "Unutarnja rotacija ramena",
+        duration: "5 min",
+        repetitions: "2 serije po 10 ponavljanja",
+        description: "Poboljšava snagu i kontrolu mišića ramena.",
+        youtubeEmbed: "https://www.youtube.com/embed/-H6pLhuV8Hc?start=608&end=635&autoplay=1",
+        videoPlaceholder: "/images/urot.png",
+        image: "/images/urot.png",
         instructions: [
-          "Držite lagane utege u visini ramena",
-          "Potisnite utege prema gore",
-          "Potpuno ispružite ruke",
-          "Spustite kontrolirano",
-          "3 serije od 10 ponavljanja"
+          "Stanite bočno uz pričvršćenu traku",
+          "Savijte lakat pod 90 stupnjeva",
+          "Držite lakat uz tijelo",
+          "Povlačite podlakticu prema trbuhu",
+          "Polako se vratite u početni položaj"
         ]
       },
       {
         id: 307,
-        title: "Veslanje s trakom",
-        duration: "7 min",
-        repetitions: "3 serije od 12 ponavljanja",
-        description: "Jačanje leđnih i ramenskih mišića",
-        videoPlaceholder: "https://images.unsplash.com/photo-1625223192003-76b3cc37350c?w=800",
-        image: "https://images.unsplash.com/photo-1625223192003-76b3cc37350c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+        title: "Torakalna rotacija",
+        duration: "6 min",
+        repetitions: "2 serije po 8–10 ponavljanja sa svake strane",
+        description: "Povećava pokretljivost prsne kralježnice i aktivaciju lopatica.",
+        youtubeEmbed: "https://www.youtube.com/embed/-H6pLhuV8Hc?start=688&end=725&autoplay=1",
+        videoPlaceholder: "/images/tork.png",
+        image: "/images/tork.png",
         instructions: [
-          "Pričvrstite elastičnu traku",
-          "Povucite laktove prema natrag",
-          "Stisnite lopatice zajedno",
-          "Vratite se polako",
-          "3 serije od 12 ponavljanja"
+          "Zauzmite položaj na sve četiri",
+          "Jednu ruku stavite iza glave",
+          "Rotirajte gornji dio tijela prema stropu",
+          "Pratite pokret pogledom",
+          "Vratite se u početni položaj i ponovite"
         ]
       },
       {
         id: 308,
-        title: "Yoga pose - Dijete",
+        title: "Cat camel",
         duration: "5 min",
-        repetitions: "Zadržati 1-2 minute",
-        description: "Opuštanje i istezanje cijelog tijela",
-        videoPlaceholder: "https://images.unsplash.com/photo-1772283152748-ae588cd86bc7?w=800",
-        image: "https://images.unsplash.com/photo-1772283152748-ae588cd86bc7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400",
+        repetitions: "2 serije po 10 ponavljanja",
+        description: "Poboljšava pokretljivost kralježnice i smanjuje ukočenost.",
+        youtubeEmbed: "https://www.youtube.com/embed/-H6pLhuV8Hc?start=775&end=806&autoplay=1",
+        videoPlaceholder: "/images/cat.png",
+        image: "/images/cat.png",
         instructions: [
-          "Kleknite na pod",
-          "Spustite stražnjicu prema petama",
-          "Ispružite ruke naprijed",
-          "Opustite ramena i glavu",
-          "Zadržite 1-2 minute, duboko dišite"
+          "Zauzmite položaj na sve četiri",
+          "Zaokružite leđa prema stropu",
+          "Zadržite položaj 5 sekundi",
+          "Zatim spustite trbuh i podignite prsni koš",
+          "Zadržite 5 sekundi i ponovite"
         ]
       }
     ]
@@ -587,6 +593,7 @@ export default function App() {
   ];
 
   const remainingCount = allExercises[selectedPhase].length - 3;
+  const displayedRemainingCount = remainingCount + 1;
 
   return (
     <div className="min-h-screen bg-background">
@@ -950,11 +957,11 @@ export default function App() {
                   {showPhaseExercises[selectedPhase] ? (
                     <ChevronDown className="w-10 h-10 text-white" />
                   ) : (
-                    <span className="text-3xl font-medium text-white">+{remainingCount}</span>
+                    <span className="text-3xl font-medium text-white">+{displayedRemainingCount}</span>
                   )}
                 </motion.div>
                 <h3 className="text-2xl mb-3 text-primary">
-                  {showPhaseExercises[selectedPhase] ? "Sakrij dodatne vježbe" : `+${remainingCount} vježbi`}
+                  {showPhaseExercises[selectedPhase] ? "Sakrij dodatne vježbe" : `+${displayedRemainingCount} vježbi`}
                 </h3>
                 <p className="text-muted-foreground mb-4">
                   {showPhaseExercises[selectedPhase]
@@ -1593,27 +1600,81 @@ export default function App() {
       </Dialog.Root>
 
       {/* Exercise Detail Dialog */}
-      <Dialog.Root open={!!selectedExercise} onOpenChange={() => setSelectedExercise(null)}>
+      <Dialog.Root
+        open={!!selectedExercise}
+        onOpenChange={(open) => {
+          if (!open) {
+            setSelectedExercise(null);
+            setShowYoutubePlayback(false);
+          }
+        }}
+      >
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50" />
           <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-3xl max-h-[95vh] bg-white rounded-3xl overflow-hidden shadow-2xl md:max-h-[90vh] overflow-y-auto">
             {selectedExercise && (
               <>
-                <div className="relative h-80">
-                  <ImageWithFallback
-                    src={selectedExercise.videoPlaceholder}
-                    alt={selectedExercise.title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-center justify-center">
-                    <motion.button
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="w-20 h-20 rounded-full bg-white/95 hover:bg-white flex items-center justify-center transition-all shadow-xl"
-                    >
-                      <Play className="w-8 h-8 text-primary ml-1" />
-                    </motion.button>
-                  </div>
+                <div className="relative h-80 overflow-hidden bg-black">
+                  {showYoutubePlayback && selectedExercise.youtubeEmbed ? (
+                    <iframe
+                      src={selectedExercise.youtubeEmbed}
+                      title="YouTube video player"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      className="w-full h-full"
+                    />
+                  ) : selectedExercise.youtubeEmbed ? (
+                    <>
+                      <ImageWithFallback
+                        src={selectedExercise.videoPlaceholder}
+                        alt={selectedExercise.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-center justify-center">
+                        <motion.button
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.95 }}
+                          onClick={() => {
+                            if (selectedExercise.youtubeEmbed) {
+                              setShowYoutubePlayback(true);
+                            }
+                          }}
+                          className="w-20 h-20 rounded-full bg-white/95 hover:bg-white flex items-center justify-center transition-all shadow-xl"
+                        >
+                          <Play className="w-8 h-8 text-primary ml-1" />
+                        </motion.button>
+                      </div>
+                    </>
+                  ) : selectedExercise.video ? (
+                    <video
+                      src={selectedExercise.video}
+                      controls
+                      className="w-full h-full object-cover"
+                      preload="metadata"
+                    />
+                  ) : (
+                    <>
+                      <ImageWithFallback
+                        src={selectedExercise.videoPlaceholder}
+                        alt={selectedExercise.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-center justify-center">
+                        <motion.button
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.95 }}
+                          onClick={() => {
+                            if (selectedExercise.youtubeEmbed) {
+                              setShowYoutubePlayback(true);
+                            }
+                          }}
+                          className="w-20 h-20 rounded-full bg-white/95 hover:bg-white flex items-center justify-center transition-all shadow-xl"
+                        >
+                          <Play className="w-8 h-8 text-primary ml-1" />
+                        </motion.button>
+                      </div>
+                    </>
+                  )}
                   <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full flex items-center gap-2 shadow-lg">
                     <Clock className="w-4 h-4 text-primary" />
                     <span className="text-sm font-medium">{selectedExercise.duration}</span>
